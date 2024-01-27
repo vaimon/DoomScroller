@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DoomScroller</string>
+    <string name="loading_animation_desc">Loading animation</string>
 </resources>
