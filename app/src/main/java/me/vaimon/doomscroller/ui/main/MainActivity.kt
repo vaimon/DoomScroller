@@ -2,6 +2,7 @@ package me.vaimon.doomscroller.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         setupObservers()
         viewModel.fetchPosts()
+        toggleProgressBar(true)
         setContentView(binding.root)
     }
 
@@ -32,8 +34,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.posts.observe(this){
+            toggleProgressBar(false)
             postsAdapter.setItems(it)
         }
+    }
+
+    private fun toggleProgressBar(shouldShow: Boolean){
+        binding.progressBar.visibility = if(shouldShow) View.VISIBLE else View.GONE
     }
 
     private fun setupRecyclerView(){
