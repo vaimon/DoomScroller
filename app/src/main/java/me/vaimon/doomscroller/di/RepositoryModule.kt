@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import me.vaimon.doomscroller.data.repositories.PostRepository
 import me.vaimon.doomscroller.data.repositories.impl.PostRepositoryImpl
+import me.vaimon.doomscroller.data.sources.ApiDataSource
 import javax.inject.Singleton
 
 @Module
@@ -14,5 +15,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun providePostRepository() : PostRepository = PostRepositoryImpl()
+    fun providePostRepository(
+        apiDataSource: ApiDataSource
+    ) : PostRepository = PostRepositoryImpl(apiDataSource)
 }
