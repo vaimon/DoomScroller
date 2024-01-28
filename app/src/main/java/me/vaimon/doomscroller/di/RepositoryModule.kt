@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import me.vaimon.doomscroller.data.repositories.PostRepository
 import me.vaimon.doomscroller.data.repositories.impl.PostRepositoryImpl
 import me.vaimon.doomscroller.data.sources.ApiDataSource
+import me.vaimon.doomscroller.data.sources.PostPagingSource
 import javax.inject.Singleton
 
 @Module
@@ -16,6 +17,6 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun providePostRepository(
-        apiDataSource: ApiDataSource
-    ) : PostRepository = PostRepositoryImpl(apiDataSource)
+        pagingSource: PostPagingSource
+    ) : PostRepository = PostRepositoryImpl(pagingSource)
 }

@@ -1,12 +1,9 @@
 package me.vaimon.doomscroller.data.repositories.impl
 
-import kotlinx.coroutines.delay
-import me.vaimon.doomscroller.data.models.Post
 import me.vaimon.doomscroller.data.repositories.PostRepository
-import me.vaimon.doomscroller.data.sources.ApiDataSource
+import me.vaimon.doomscroller.data.sources.PostPagingSource
 
-class PostRepositoryImpl(private val apiDataSource: ApiDataSource) : PostRepository {
-    override suspend fun getPosts(): List<Post> {
-        return apiDataSource.getPosts()
-    }
+class PostRepositoryImpl(private val _pagingSource: PostPagingSource) : PostRepository {
+    override val pagingSource: PostPagingSource
+        get() = _pagingSource
 }

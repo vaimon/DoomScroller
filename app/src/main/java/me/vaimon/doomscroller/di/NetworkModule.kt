@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import me.vaimon.doomscroller.data.sources.ApiDataSource
+import me.vaimon.doomscroller.data.sources.PostPagingSource
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -27,5 +28,11 @@ object NetworkModule {
         return retrofit
             .build()
             .create(ApiDataSource::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun providePostPagingSource(apiDataSource: ApiDataSource): PostPagingSource {
+        return PostPagingSource(apiDataSource)
     }
 }

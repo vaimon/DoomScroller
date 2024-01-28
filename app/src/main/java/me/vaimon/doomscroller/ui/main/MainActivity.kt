@@ -2,12 +2,14 @@ package me.vaimon.doomscroller.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import me.vaimon.doomscroller.R
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import me.vaimon.doomscroller.databinding.ActivityMainBinding
 import me.vaimon.doomscroller.ui.main.adapters.PostsRvAdapter
 
@@ -23,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         setupToolbar()
         setupRecyclerView()
         setupObservers()
-        viewModel.fetchPosts()
-        toggleProgressBar(true)
         setContentView(binding.root)
     }
 
@@ -33,14 +33,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        viewModel.posts.observe(this){
-            toggleProgressBar(false)
-            postsAdapter.setItems(it)
+        lifecycleScope.launch {
+            viewModel.postPagingFlow.collectLatest {
+                postsAdapter.submitData(it)
+            }
         }
-    }
-
-    private fun toggleProgressBar(shouldShow: Boolean){
-        binding.progressBar.visibility = if(shouldShow) View.VISIBLE else View.GONE
     }
 
     private fun setupRecyclerView(){
