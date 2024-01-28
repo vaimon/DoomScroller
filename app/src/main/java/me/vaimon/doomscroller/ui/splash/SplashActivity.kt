@@ -33,9 +33,15 @@ class SplashActivity : AppCompatActivity() {
             if(it.isLoading){
                 (binding.animLoading.drawable as AnimatedVectorDrawable).start()
             }else{
-                Toast.makeText(this,"End!",Toast.LENGTH_SHORT).show()
+                navigateToMainScreen()
             }
         }
+    }
+
+    private fun navigateToMainScreen(){
+        val intent = Intent(this@SplashActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setupAnimation() {
