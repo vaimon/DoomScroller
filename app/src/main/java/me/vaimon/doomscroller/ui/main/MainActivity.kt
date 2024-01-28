@@ -2,10 +2,10 @@ package me.vaimon.doomscroller.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setupToolbar()
         setupRecyclerView()
-        setupObservers()
+        setupPaging()
         setContentView(binding.root)
     }
 
@@ -32,10 +32,15 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
     }
 
-    private fun setupObservers() {
+    private fun setupPaging() {
         lifecycleScope.launch {
             viewModel.postPagingFlow.collectLatest {
                 postsAdapter.submitData(it)
+            }
+        }
+        lifecycleScope.launch {
+            postsAdapter.loadStateFlow.collectLatest {
+                binding.progressBar.isVisible = it.refresh is LoadState.Loading
             }
         }
     }

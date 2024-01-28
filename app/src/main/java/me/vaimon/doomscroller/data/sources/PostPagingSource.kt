@@ -19,7 +19,6 @@ class PostPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Post> {
         val nextPage = params.key ?: 1
         delay(2000)
-        Log.d("Debug", params.loadSize.toString())
         return try{
             val loadedPosts = apiDataSource.getPosts(page = nextPage, pageSize = 20)
             LoadResult.Page(
