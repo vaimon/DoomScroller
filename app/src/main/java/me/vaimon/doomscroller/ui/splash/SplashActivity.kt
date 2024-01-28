@@ -1,6 +1,7 @@
 package me.vaimon.doomscroller.ui.splash
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.Animatable2
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import me.vaimon.doomscroller.databinding.ActivitySplashBinding
+import me.vaimon.doomscroller.ui.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

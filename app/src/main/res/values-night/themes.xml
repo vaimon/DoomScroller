@@ -2,6 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.DoomScroller" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/purple_dark</item>
+        <item name="colorPrimaryDark">@color/purple_extra_dark</item>
+        <item name="colorAccent">@color/accent_orange_dark</item>
+    </style>
+
+    <style name="Theme.DoomScroller.Splash" parent="Theme.DoomScroller">
+        <item name="colorPrimaryDark">?android:attr/colorBackground</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">?attr/backgroundColor</item>
+        <item name="colorOnPrimary">?attr/colorOnBackground</item>
     </style>
 </resources>

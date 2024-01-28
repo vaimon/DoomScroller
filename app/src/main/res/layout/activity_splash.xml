@@ -12,6 +12,6 @@
         android:layout_gravity="center"
         android:contentDescription="@string/loading_animation_desc"
         android:src="@drawable/splash_animation"
-        app:tint="@color/white"
+        app:tint="?attr/colorAccent"
         />
 </FrameLayout>
