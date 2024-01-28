@@ -8,11 +8,11 @@ import me.vaimon.doomscroller.data.repositories.PostRepository
 import me.vaimon.doomscroller.data.repositories.impl.PostRepositoryImpl
 import javax.inject.Singleton
 
-//@InstallIn(SingletonComponent::class)
-//@Module
-//object RepositoryModule {
-//
-//    @Singleton
-//    @Provides
-//    fun providePostRepository() : PostRepository = PostRepositoryImpl()
-//}
+@Module
+@InstallIn(SingletonComponent::class)
+object RepositoryModule {
+
+    @Singleton
+    @Provides
+    fun providePostRepository() : PostRepository = PostRepositoryImpl()
+}

@@ -5,10 +5,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import me.vaimon.doomscroller.R
 import me.vaimon.doomscroller.databinding.ActivityMainBinding
 import me.vaimon.doomscroller.ui.main.adapters.PostsRvAdapter
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
