@@ -8,7 +8,6 @@ import me.vaimon.doomscroller.data.db.AppDatabase
 import me.vaimon.doomscroller.data.db.PageKeyDao
 import me.vaimon.doomscroller.data.db.PostDao
 import me.vaimon.doomscroller.data.sources.ApiDataSource
-import me.vaimon.doomscroller.data.sources.paging.PostPagingSource
 import me.vaimon.doomscroller.data.sources.paging.PostRemoteMediator
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

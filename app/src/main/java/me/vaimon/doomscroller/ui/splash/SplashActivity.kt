@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import me.vaimon.doomscroller.R
 import me.vaimon.doomscroller.databinding.ActivitySplashBinding
 import me.vaimon.doomscroller.ui.main.MainActivity
 
@@ -18,6 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
     private val viewModel: SplashViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_DoomScroller_Splash)
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
 

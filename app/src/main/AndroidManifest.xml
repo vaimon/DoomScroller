@@ -18,7 +18,7 @@
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.DoomScroller.Splash"
+            android:theme="@style/Theme.DoomScroller.Launcher"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

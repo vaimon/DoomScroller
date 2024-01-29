@@ -12,7 +12,13 @@
     <style name="Theme.DoomScroller.Splash" parent="Theme.DoomScroller">
         <item name="colorPrimaryDark">?android:attr/colorBackground</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="colorPrimary">?attr/backgroundColor</item>
+        <item name="colorPrimary">?android:attr/colorBackground</item>
         <item name="colorOnPrimary">?attr/colorOnBackground</item>
+    </style>
+
+    <style name="Theme.DoomScroller.Launcher">
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 </resources>
