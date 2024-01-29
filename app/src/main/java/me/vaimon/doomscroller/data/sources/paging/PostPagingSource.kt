@@ -1,10 +1,9 @@
-package me.vaimon.doomscroller.data.sources
+package me.vaimon.doomscroller.data.sources.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import kotlinx.coroutines.delay
 import me.vaimon.doomscroller.data.models.Post
+import me.vaimon.doomscroller.data.sources.ApiDataSource
 
 class PostPagingSource(
     private val apiDataSource: ApiDataSource
@@ -18,7 +17,6 @@ class PostPagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Post> {
         val nextPage = params.key ?: 1
-        delay(2000)
         return try{
             val loadedPosts = apiDataSource.getPosts(page = nextPage, pageSize = 20)
             LoadResult.Page(

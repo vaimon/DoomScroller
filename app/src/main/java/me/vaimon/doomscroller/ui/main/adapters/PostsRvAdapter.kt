@@ -10,13 +10,7 @@ import me.vaimon.doomscroller.data.models.Post
 import me.vaimon.doomscroller.databinding.ItemPostBinding
 
 class PostsRvAdapter(
-    private val onClickListener: OnItemClickListener? = null
 ) : PagingDataAdapter<Post, PostsRvAdapter.ViewHolder>(PostComparator) {
-
-    private val mOnClickListener = View.OnClickListener{
-        val item = it.tag as Post
-        onClickListener?.onPostClick(item)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -33,13 +27,6 @@ class PostsRvAdapter(
 
         holder.title.text = item?.title ?: ""
         holder.body.text = item?.body ?: ""
-        
-        onClickListener?.also {
-            with(holder.itemView) {
-                tag = item
-                setOnClickListener(mOnClickListener)
-            }
-        }
     }
 
     inner class ViewHolder(binding: ItemPostBinding) :
@@ -48,17 +35,13 @@ class PostsRvAdapter(
         val body = binding.body
     }
 
-    interface OnItemClickListener {
-        fun onPostClick(post: Post)
-    }
-
     object PostComparator : DiffUtil.ItemCallback<Post>() {
         override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem._id == newItem._id
         }
 
         override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-            return oldItem == newItem
+            return oldItem.body == newItem.body && oldItem.title == newItem.title
         }
     }
 }

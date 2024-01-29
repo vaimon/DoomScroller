@@ -1,9 +1,10 @@
 package me.vaimon.doomscroller.data.repositories
 
+import androidx.paging.Pager
+import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import me.vaimon.doomscroller.data.models.Post
-import me.vaimon.doomscroller.data.sources.PostPagingSource
 
 interface PostRepository {
-    val pagingSource: PostPagingSource
+    fun getPostPagerFlow(): Flow<PagingData<Post>>
 }

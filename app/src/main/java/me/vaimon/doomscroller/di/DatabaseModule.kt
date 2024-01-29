@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import me.vaimon.doomscroller.data.db.AppDatabase
+import me.vaimon.doomscroller.data.db.PageKeyDao
 import me.vaimon.doomscroller.data.db.PostDao
 import javax.inject.Singleton
 
@@ -20,12 +21,18 @@ object DatabaseModule {
         return Room.databaseBuilder(
             context, AppDatabase::class.java,
             AppDatabase.DATABASE_NAME
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Singleton
     @Provides
-    fun providePostDao(blogDatabase: AppDatabase): PostDao {
-        return blogDatabase.postDao()
+    fun providePostDao(db: AppDatabase): PostDao {
+        return db.postDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providePageKeyDao(db: AppDatabase): PageKeyDao {
+        return db.pageKeyDao()
     }
 }
