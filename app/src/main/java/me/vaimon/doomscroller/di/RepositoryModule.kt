@@ -7,7 +7,6 @@ import dagger.hilt.components.SingletonComponent
 import me.vaimon.doomscroller.data.db.AppDatabase
 import me.vaimon.doomscroller.data.repositories.PostRepository
 import me.vaimon.doomscroller.data.repositories.impl.PostRepositoryImpl
-import me.vaimon.doomscroller.data.sources.paging.PostPagingSource
 import me.vaimon.doomscroller.data.sources.paging.PostRemoteMediator
 import javax.inject.Singleton
 
